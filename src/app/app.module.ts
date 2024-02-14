@@ -12,6 +12,7 @@ import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     ProductComponent,
     HomeComponent,
+    UserdetailsComponent,
   ],
   imports: [
     BrowserModule,

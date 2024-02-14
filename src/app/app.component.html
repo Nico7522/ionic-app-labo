@@ -15,9 +15,16 @@
      </div>
   </ion-menu>     
   <div class="ion-page" id = "mainContent" main>
-       <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-       </ion-buttons>
+    <ion-buttons class="ion-justify-content-between" slot="start">
+      <ion-menu-button></ion-menu-button>
+      @if (isTokenExist) {
+        <ion-button routerLink="/userdetails" fill="outline" >
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          Profile
+        </ion-button>
+      }
+      
+    </ion-buttons>
            <!-- write your app content here-->
            <ion-router-outlet id="mainContent"></ion-router-outlet>
   </div>
