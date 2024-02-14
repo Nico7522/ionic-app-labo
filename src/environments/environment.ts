@@ -8,6 +8,7 @@ export const environment = {
 
 export const api = {
   url: 'https://localhost:7005/api',
+  imgUrl: 'https://localhost:7005/images',
 };
 
 /*

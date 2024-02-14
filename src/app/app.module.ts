@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BagComponent } from './bag/bag.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
     ProductComponent,
     HomeComponent,
     UserdetailsComponent,
+    ProfileComponent,
+    BagComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,15 +18,36 @@
     <ion-buttons class="ion-justify-content-between" slot="start">
       <ion-menu-button></ion-menu-button>
       @if (isTokenExist) {
-        <ion-button routerLink="/userdetails" fill="outline" >
-          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-          Profile
-        </ion-button>
+        <div class="profil">
+          <ion-button routerLink="/profile" fill="outline" >
+            <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+            Profile
+          </ion-button>
+          <ion-button routerLink="/bag" fill="outline" >
+            <ion-icon slot="start" name="bag"></ion-icon>
+            Panier
+          </ion-button>
+        </div>
       }
       
     </ion-buttons>
            <!-- write your app content here-->
            <ion-router-outlet (ionNavWillChange)="closeMenu()" id="mainContent"></ion-router-outlet>
+           <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Modal</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen(false)">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content id="mainContent">
+             <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam repudiandae officiis alias corporis, adipisci mollitia exercitationem reprehenderit ipsa illo ad?</div>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
   </div>
 </ion-app>
 
