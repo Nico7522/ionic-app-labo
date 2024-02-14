@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center">Se connecter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="mainContent">
+  <form [formGroup]="loginForm">
+  <ion-item>
+  <ion-input formControlName=email type="email" label="Email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input formControlName="password" type="password" label="Mot de passe"></ion-input>
+  </ion-item>
+  <ion-button (click)="handleSubmit()" shape="round">Round</ion-button>
+  </form>
+</ion-content>
+
