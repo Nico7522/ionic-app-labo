@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { ModalComponent } from '../modal/modal.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
-  private _$isOpen: Subject<boolean> = new Subject<boolean>();
-  $isOpen = this._$isOpen.asObservable();
+  constructor(private _modalCtrl: ModalController) {}
 
-  constructor() {}
+  async openModal() {
+    const modal = await this._modalCtrl.create({
+      component: ModalComponent,
+    });
+    modal.present();
+    await modal.onDidDismiss();
 
-  toggleModal(value: boolean) {
-    this._$isOpen.next(value);
   }
 }

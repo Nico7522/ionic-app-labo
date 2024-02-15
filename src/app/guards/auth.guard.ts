@@ -7,7 +7,7 @@ export const AuthGuard: CanActivateChildFn = (route, state) => {
   let modalService = inject(ModalService);
   let tokenService = inject(TokenService);
   if (!tokenService.isTokenExist) {
-    modalService.toggleModal(true);
+    modalService.openModal();
     return false;
   }
   return true;

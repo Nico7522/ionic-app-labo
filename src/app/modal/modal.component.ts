@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { ModalService } from '../services/modal.service';
 
 @Component({
@@ -8,14 +9,11 @@ import { ModalService } from '../services/modal.service';
 })
 export class ModalComponent implements OnInit {
   isOpen!: boolean;
-  constructor(private _modalService: ModalService) {}
+  constructor(private _modalCtrl: ModalController) {}
 
-  ngOnInit() {
-    this._modalService.$isOpen.subscribe((status) => (this.isOpen = status));
-  }
+  ngOnInit() {}
 
-  closeModal() {
-    this._modalService.toggleModal(false);
-    this.isOpen = false;
+  cancel() {
+    return this._modalCtrl.dismiss(null, 'cancel');
   }
 }

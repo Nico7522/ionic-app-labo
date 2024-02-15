@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BagComponent } from './bag/bag.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'bag',
+        canActivate: [AuthGuard],
         component: BagComponent,
       },
       {
