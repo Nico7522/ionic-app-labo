@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   private _mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   private _passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   loginForm!: FormGroup;
-  errorMessage!: string;
+  message!: string;
   constructor(
     private _formBuilder: FormBuilder,
     private _authService: AuthService
@@ -32,12 +32,11 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.get('password')?.value,
       };
       this._authService.login(loginform).subscribe({
-        next: (token) => console.log(token),
-        error: (err) =>{ console.log(err)
-          if(err.status === 400) {
-            this.errorMessage = "Erreur"
+        error: (err) => {
+          if (err.status === 400) {
+            this.message = 'Erreur';
           }
-        }
+        },
       });
     }
   }

@@ -13,7 +13,7 @@
       <ion-input errorText="Champ requis" formControlName="lastName" type="text" label="Prénom"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input errorText="Champ requis" formControlName="phoneNumber" placeholder="+32 000 00 00 00" type="text" label="N° de téléphone"></ion-input>
+      <ion-input errorText="Numéro invalide" formControlName="phoneNumber" placeholder="+32 000 00 00 00" type="text" label="N° de téléphone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input errorText="Email non valide" formControlName="email" type="email" label="Email"></ion-input>
@@ -22,7 +22,12 @@
       <ion-input errorText="Mot de passe invalide" formControlName="password" type="password" label="Mot de passe"></ion-input>
     </ion-item>
     <ion-button shape="round" (click)="handleSubmit()">Créer</ion-button>
+
+    
   </form>
+  @if (message != null) {
+    <span>{{message}}</span>
+  }
 
 
 </ion-content>

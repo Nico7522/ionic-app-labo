@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Filtre</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content scrollY="false">
+
+  <ion-item>
+    <ion-input label="Nom du produit"></ion-input>
+  </ion-item>
+
+  <ion-radio-group value="center">
+    <ion-item>
+      <ion-radio value="femme" labelPlacement="stacked" alignment="center">Femme</ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-radio value="homme" labelPlacement="stacked" alignment="center">Femme</ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  <ion-item>
+    <!-- Faire le handleChange pour les caté -->
+    <ion-select label="Catégories" >
+      <ion-select-option value="sport">Sport</ion-select-option>
+      <ion-select-option value="marche">Marche</ion-select-option>
+      <ion-select-option value="rue">Pour la rue</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

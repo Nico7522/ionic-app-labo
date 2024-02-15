@@ -10,14 +10,14 @@
   <ion-input label-placement="floating" errorText="Email non valide" formControlName="email" type="email" label="Email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input label-placement="floating" errorText="Mot de passe non valide" formControlName="password" type="password" label="Mot de passe"></ion-input>
+    <ion-input clearOnEdit="false" label-placement="floating" errorText="Mot de passe non valide" formControlName="password" type="password" label="Mot de passe"></ion-input>
   </ion-item>
   <ion-button (click)="handleSubmit()" shape="round">Se connecter</ion-button>
-  @if (errorMessage != null) {
-    <span>{{errorMessage}}</span>
-  }
-  </form>
+</form>
 
+@if (message != null) {
+  <span>{{message}}</span>
+}
 
 </ion-content>
 

@@ -17,6 +17,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BagComponent } from './bag/bag.component';
 import { ModalComponent } from './modal/modal.component';
 import { MaskitoDirective } from '@maskito/angular';
+import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
+import { ModalfilterComponent } from './modalfilter/modalfilter.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { MaskitoDirective } from '@maskito/angular';
     ProfileComponent,
     BagComponent,
     ModalComponent,
+    ActiveaccountComponent,
+    ModalfilterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { MaskitoDirective } from '@maskito/angular';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaskitoDirective
+    MaskitoDirective,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

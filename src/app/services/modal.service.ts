@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, ComponentRef, Injectable } from '@angular/core';
+import { ModalController, ModalOptions } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -9,9 +9,9 @@ import { ModalComponent } from '../modal/modal.component';
 export class ModalService {
   constructor(private _modalCtrl: ModalController) {}
 
-  async openModal() {
+  async openModal(component: any) {
     const modal = await this._modalCtrl.create({
-      component: ModalComponent,
+      component: component,
     });
     modal.present();
     await modal.onDidDismiss();

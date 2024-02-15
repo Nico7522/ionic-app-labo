@@ -26,8 +26,11 @@ export class AuthService {
       );
   }
 
-  register (registerForm: Register)  {
-     this._httpClient.post(`${api.url}/auth/register`, registerForm).subscribe(res => console.log(res)
-    )
+  register (registerForm: Register) : Observable<Token>  {
+     return this._httpClient.post<Token>(`${api.url}/auth/register`, registerForm).pipe(map((response) => {
+      localStorage.setItem('token', response.token);
+      this._tokenService.emitTokenExist();
+      return response;
+     }))
   }
 }

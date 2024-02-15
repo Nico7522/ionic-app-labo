@@ -1,5 +1,5 @@
 ion-grid {
-  --ion-grid-columns: 3;
+  --ion-grid-columns: 4;
 }
 
 ion-card-subtitle {
@@ -25,7 +25,7 @@ ion-card-title {
 }
 
 
-  @media only screen and (max-width: 775px) {
+  @media only screen and (max-width: 1015px) {
     ion-grid {
       --ion-grid-columns: 2;
     }

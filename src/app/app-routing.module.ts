@@ -8,6 +8,7 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { BagComponent } from './bag/bag.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
       },
+      {
+        path: "confirmaccount/:id",
+        component: ActiveaccountComponent
+      }
     ],
   },
 ];

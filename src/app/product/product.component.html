@@ -18,7 +18,7 @@
                         </ion-card-header>
                       
                         <ion-card-content>
-                            <ion-button>Voir les détails</ion-button>
+                            <ion-button >Voir les détails</ion-button>
                             <ion-button routerLink="/bag" >Ajouter au panier</ion-button>
 
                         </ion-card-content>
@@ -30,14 +30,11 @@
     </ion-content>
   
     <ion-footer>
-      <ion-toolbar>
-        <div class="footer">
-            <ion-button>Femme</ion-button>
-            <ion-button>Homme</ion-button>
-            <ion-button>En prommo</ion-button>
-            <ion-button>Nouveauté</ion-button>
+      <ion-toolbar class="ion-text-center">
+            <ion-button (click)="openFilter()" >
+              <ion-icon name="filter-outline"></ion-icon>
+            </ion-button>
 
-        </div>
       </ion-toolbar>
    
     </ion-footer>
