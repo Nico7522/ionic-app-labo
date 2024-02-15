@@ -1,18 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title align="center">Se connecter</ion-title>
+    <ion-title align="center">Créer un compte</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content id="content">
-  <form action="">
-  <ion-item>
-  <ion-input type="email" label="Email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input type="password" label="Mot de passe"></ion-input>
-  </ion-item>
-  <ion-button shape="round">Round</ion-button>
+<ion-content scrollY="false">
+  <form [formGroup]="registerForm">
+    <ion-item>
+      <ion-input errorText="Champ requis" formControlName="firstName" type="text" label="Nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input errorText="Champ requis" formControlName="lastName" type="text" label="Prénom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input errorText="Champ requis" formControlName="phoneNumber" placeholder="+32 000 00 00 00" type="text" label="N° de téléphone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input errorText="Email non valide" formControlName="email" type="email" label="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input errorText="Mot de passe invalide" formControlName="password" type="password" label="Mot de passe"></ion-input>
+    </ion-item>
+    <ion-button shape="round" (click)="handleSubmit()">Créer</ion-button>
   </form>
 
 

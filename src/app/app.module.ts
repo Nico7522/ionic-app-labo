@@ -16,6 +16,7 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BagComponent } from './bag/bag.component';
 import { ModalComponent } from './modal/modal.component';
+import { MaskitoDirective } from '@maskito/angular';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ModalComponent } from './modal/modal.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaskitoDirective
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

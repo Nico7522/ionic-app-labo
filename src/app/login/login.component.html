@@ -4,15 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content id="mainContent">
+<ion-content  id="mainContent" scrollY="false">
   <form [formGroup]="loginForm">
   <ion-item>
-  <ion-input formControlName=email type="email" label="Email"></ion-input>
+  <ion-input label-placement="floating" errorText="Email non valide" formControlName="email" type="email" label="Email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input formControlName="password" type="password" label="Mot de passe"></ion-input>
+    <ion-input label-placement="floating" errorText="Mot de passe non valide" formControlName="password" type="password" label="Mot de passe"></ion-input>
   </ion-item>
   <ion-button (click)="handleSubmit()" shape="round">Se connecter</ion-button>
+  @if (errorMessage != null) {
+    <span>{{errorMessage}}</span>
+  }
   </form>
+
+
 </ion-content>
 

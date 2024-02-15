@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { api } from '../../environments/environment';
-import { Login, Token } from '../models/login.model';
+import { Login, Register, Token } from '../models/login.model';
 import { Observable, map, of } from 'rxjs';
 import { TokenService } from './token.service';
 @Injectable({
@@ -24,5 +24,10 @@ export class AuthService {
           return response;
         })
       );
+  }
+
+  register (registerForm: Register)  {
+     this._httpClient.post(`${api.url}/auth/register`, registerForm).subscribe(res => console.log(res)
+    )
   }
 }

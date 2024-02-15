@@ -24,6 +24,15 @@ ion-card-title {
   justify-content: center;
 }
 
-ion-modal {
-  --height: auto;
-}
+
+  @media only screen and (max-width: 775px) {
+    ion-grid {
+      --ion-grid-columns: 2;
+    }
+    }
+
+    @media only screen and (max-width: 600px) {
+      ion-grid {
+        --ion-grid-columns: 1;
+      }
+      }

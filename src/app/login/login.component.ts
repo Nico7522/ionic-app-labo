@@ -9,7 +9,10 @@ import { Login } from '../models/login.model';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  private _mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  private _passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   loginForm!: FormGroup;
+  errorMessage!: string;
   constructor(
     private _formBuilder: FormBuilder,
     private _authService: AuthService
@@ -17,13 +20,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(this._mailPattern)]],
+      password: ['', [Validators.required, Validators.pattern(this._passwordPattern)]],
     });
   }
 
   handleSubmit(): void {
-    console.log(this.loginForm);
     if (this.loginForm.valid) {
       const loginform: Login = {
         email: this.loginForm.get('email')?.value,
@@ -31,7 +33,11 @@ export class LoginComponent implements OnInit {
       };
       this._authService.login(loginform).subscribe({
         next: (token) => console.log(token),
-        error: (err) => console.log(err),
+        error: (err) =>{ console.log(err)
+          if(err.status === 400) {
+            this.errorMessage = "Erreur"
+          }
+        }
       });
     }
   }
