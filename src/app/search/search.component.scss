@@ -1,0 +1,22 @@
+ion-grid {
+  --ion-grid-columns: 4;
+}
+
+ion-card-subtitle {
+  font-size: 2em;
+}
+
+ion-card-title {
+  font-size: 2.3em;
+}
+@media only screen and (max-width: 1015px) {
+  ion-grid {
+    --ion-grid-columns: 2;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  ion-grid {
+    --ion-grid-columns: 1;
+  }
+}

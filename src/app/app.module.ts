@@ -10,15 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BagComponent } from './bag/bag.component';
 import { ModalComponent } from './modal/modal.component';
 import { MaskitoDirective } from '@maskito/angular';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 import { ModalfilterComponent } from './modalfilter/modalfilter.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { ModalfilterComponent } from './modalfilter/modalfilter.component';
     RegisterComponent,
     ProductComponent,
     HomeComponent,
-    UserdetailsComponent,
     ProfileComponent,
     BagComponent,
     ModalComponent,
     ActiveaccountComponent,
-    ModalfilterComponent
+    ModalfilterComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,7 @@ import { ModalfilterComponent } from './modalfilter/modalfilter.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaskitoDirective,
+    FormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

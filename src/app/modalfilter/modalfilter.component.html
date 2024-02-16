@@ -7,25 +7,36 @@
   </ion-toolbar>
 </ion-header>
 <ion-content scrollY="false">
-
-  <ion-item>
-    <ion-input label="Nom du produit"></ion-input>
-  </ion-item>
-
-  <ion-radio-group value="center">
+  <form [formGroup]="filterForm">
     <ion-item>
-      <ion-radio value="femme" labelPlacement="stacked" alignment="center">Femme</ion-radio>
+      <ion-input formControlName="modelName" label="Nom du produit"></ion-input>
     </ion-item>
+  
+  
+    <ion-radio-group formControlName="sexe" value="center">
+      <ion-item>
+        <ion-radio  value="femme" labelPlacement="stacked" alignment="center">Femme</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="homme" labelPlacement="stacked" alignment="center">Homme</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="mixte" labelPlacement="stacked" alignment="center">Mixte</ion-radio>
+      </ion-item>
+    </ion-radio-group>
     <ion-item>
-      <ion-radio value="homme" labelPlacement="stacked" alignment="center">Femme</ion-radio>
+      <ion-select formControlName="category"  label="Catégories" >
+        <ion-select-option value="chaussure de sécurité">Chaussure de sécurité</ion-select-option>
+        <ion-select-option value="après-ski">Après-ski</ion-select-option>
+        <ion-select-option value="rue">Pour la rue</ion-select-option>
+      </ion-select>
+      <ion-select formControlName="brand"  label="Marque" >
+        <ion-select-option value="nike">Nike</ion-select-option>
+        <ion-select-option value="adidas">Adidas</ion-select-option>
+        <ion-select-option value="puma">Puma</ion-select-option>
+      </ion-select>
     </ion-item>
-  </ion-radio-group>
-  <ion-item>
-    <!-- Faire le handleChange pour les caté -->
-    <ion-select label="Catégories" >
-      <ion-select-option value="sport">Sport</ion-select-option>
-      <ion-select-option value="marche">Marche</ion-select-option>
-      <ion-select-option value="rue">Pour la rue</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-button (click)="handleSubmit()" >Valider</ion-button>
+  
+  </form>
 </ion-content>

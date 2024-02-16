@@ -26,11 +26,20 @@ export class AuthService {
       );
   }
 
-  register (registerForm: Register) : Observable<Token>  {
-     return this._httpClient.post<Token>(`${api.url}/auth/register`, registerForm).pipe(map((response) => {
-      localStorage.setItem('token', response.token);
-      this._tokenService.emitTokenExist();
-      return response;
-     }))
+  logout(): void {
+    localStorage.removeItem('token');
+    this._tokenService.emitTokenExist();
+  }
+
+  register(registerForm: Register): Observable<Token> {
+    return this._httpClient
+      .post<Token>(`${api.url}/auth/register`, registerForm)
+      .pipe(
+        map((response) => {
+          localStorage.setItem('token', response.token);
+          this._tokenService.emitTokenExist();
+          return response;
+        })
+      );
   }
 }

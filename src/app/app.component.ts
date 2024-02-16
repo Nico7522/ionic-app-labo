@@ -3,6 +3,7 @@ import { TokenService } from './services/token.service';
 import { MenuController, ModalController } from '@ionic/angular';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './modal/modal.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,13 @@ export class AppComponent implements OnInit {
     private _tokenService: TokenService,
     private _menu: MenuController,
     private _modalService: ModalService,
-    private _modalCtrl: ModalController
+    private _modalCtrl: ModalController,
+    private _authService: AuthService
   ) {}
   ngOnInit(): void {
     this._tokenService.$isTokenExist.subscribe(
       (status) => (this.isTokenExist = status)
     );
-
   }
 
   closeMenu() {
@@ -33,4 +34,7 @@ export class AppComponent implements OnInit {
     return this._modalCtrl.dismiss(null, 'cancel');
   }
 
+  logout() {
+    this._authService.logout();
+  }
 }
