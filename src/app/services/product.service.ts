@@ -16,6 +16,12 @@ export class ProductService {
     return this._httpClient.get<Response<Product[]>>(`${api.url}/product`);
   }
 
+  getById(productId: number): Observable<Response<Product>> {
+    return this._httpClient.get<Response<Product>>(
+      `${api.url}/product/${productId}`
+    );
+  }
+
   filter(filter: Filter): Observable<Response<Product[]>> {
     const params = new HttpParams({
       fromObject: { ...filter },

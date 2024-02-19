@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User, UserInfos } from '../models/user.model';
 import { TokenService } from '../services/token.service';
 import { UserService } from '../services/user.service';
@@ -9,7 +9,7 @@ import { Order } from '../models/order.model';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   user!: User;
   userId!: number;
   orders!: Order[];
@@ -17,6 +17,9 @@ export class ProfileComponent implements OnInit {
     private _tokenService: TokenService,
     private _userService: UserService
   ) {}
+  ngOnDestroy(): void {
+    console.log('cc');
+  }
 
   getOrders() {
     this._userService.getOrders(this.userId).subscribe({

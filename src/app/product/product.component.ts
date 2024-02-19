@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
 import { Response } from '../models/response.model';
@@ -11,7 +11,11 @@ import { ModalfilterComponent } from '../modalfilter/modalfilter.component';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  constructor(private _productService: ProductService, private _modalService: ModalService) {}
+  constructor(
+    private _productService: ProductService,
+    private _modalService: ModalService
+  ) {}
+
   products: Product[] = [];
   imageUrl: string = api.imgUrl;
   ngOnInit() {
@@ -24,6 +28,4 @@ export class ProductComponent implements OnInit {
   openFilter() {
     this._modalService.openModal(ModalfilterComponent);
   }
-
-  
 }

@@ -21,6 +21,8 @@ import { ModalfilterComponent } from './modalfilter/modalfilter.component';
 import { SearchComponent } from './search/search.component';
 import { FrenchDatePipe } from './pipes/french-date.pipe';
 import { CreateadressComponent } from './createadress/createadress.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { CreateadressComponent } from './createadress/createadress.component';
     SearchComponent,
     FrenchDatePipe,
     CreateadressComponent,
+    ProductdetailsComponent,
+    SizeselectmodalComponent,
   ],
   imports: [
     BrowserModule,

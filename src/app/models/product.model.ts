@@ -1,3 +1,6 @@
+import { Category } from './category.model';
+import { Size } from './size.model';
+
 export interface Product {
   productId: number;
   modelName: string;
@@ -7,6 +10,12 @@ export interface Product {
   image: string;
   price: number;
   discount: number;
-  categories: any[];
-  sizes: any[];
+  categories: Category[];
+  sizes: AvailableSizes[];
+}
+
+export interface AvailableSizes {
+  sizeId: number;
+  size: number;
+  stock: number;
 }

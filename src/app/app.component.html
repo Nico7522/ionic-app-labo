@@ -2,7 +2,7 @@
   <ion-menu swipe-gesture="true"  contentId="mainContent">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+          <ion-button (click)="closeMenu()" fill="outline"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
       </ion-toolbar>
     </ion-header>
      <!-- write your menu content here-->
@@ -19,15 +19,15 @@
       <ion-menu-button></ion-menu-button>
       @if (isTokenExist) {
         <div class="profil">
-          <ion-button routerLink="/profile" fill="outline" >
+          <ion-button routerLink="/profile" fill="outline" size="small" >
             <ion-icon slot="start" name="person-circle-outline"></ion-icon>
             Profile
           </ion-button>
-          <ion-button routerLink="/bag" click fill="outline" >
+          <ion-button routerLink="/bag" click fill="outline" size="small"  >
             <ion-icon slot="start" name="bag"></ion-icon>
             Panier
           </ion-button>
-          <ion-button (click)="logout()" click fill="outline" >
+          <ion-button (click)="logout()" click fill="outline" size="small"  >
             <ion-icon name="log-out-outline"></ion-icon>
             Se déconnecter
           </ion-button>

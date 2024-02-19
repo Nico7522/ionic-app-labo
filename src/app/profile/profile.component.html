@@ -11,26 +11,25 @@
       <ion-card>
       <ion-card-header>
         <ion-card-title>{{user.firstName}} {{user.lastName}}</ion-card-title>
-        <ion-card-subtitle>
-          @if (user.adresses.length > 0) {
-            <div class="adresses-container">
-              @for (adress of user.adresses; track $index) {
-                @if ($index > 0) {
-                  <p class="address" >{{adress.number}} {{adress.street}} {{adress.cityName}} {{adress.country}}</p>
-                } @else {
-                  <p >{{adress.number}} {{adress.street}} {{adress.cityName}} {{adress.country}}</p>
-  
-                }
-            <ion-button routerLink="/addadress" fill="clear" size="small">Ajouter une adresse</ion-button>
-
-              }
-            </div>
-          } @else {
-            <ion-button routerLink="/addadress" fill="clear" size="small">Ajouter une adresse</ion-button>
-          }
-        </ion-card-subtitle>
+        <ion-card-subtitle>Connecté</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
+        @if (user.adresses.length > 0) {
+          <div class="adresses-container">
+            @for (adress of user.adresses; track $index) {
+              @if ($index > 0) {
+                <p class="address" >{{adress.number}} {{adress.street}} {{adress.cityName}} {{adress.country}}</p>
+              } @else {
+                <p >{{adress.number}} {{adress.street}} {{adress.cityName}} {{adress.country}}</p>
+
+              }
+              
+            }
+          </div>
+          <ion-button routerLink="/addadress" (click)="ngOnDestroy()" fill="clear" size="small">Ajouter une adresse</ion-button>
+        } @else {
+          <ion-button routerLink="/addadress" fill="clear" size="small">Ajouter une adresse</ion-button>
+        }
         <h4>Votre email :</h4>
         <p>{{user.email}}</p> <span class="alert">{{!user.isActive ? "Veuillez valider votre compte*" : ""}}</span>
         <h4>Votre numéro de téléphone :</h4>

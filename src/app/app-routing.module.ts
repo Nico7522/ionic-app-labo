@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 import { SearchComponent } from './search/search.component';
 import { CreateadressComponent } from './createadress/createadress.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'product',
         component: ProductComponent,
+      },
+      {
+        path: 'product/details/:id',
+        component: ProductdetailsComponent,
       },
       { path: 'product/search', component: SearchComponent },
       {

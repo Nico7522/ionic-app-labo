@@ -1,4 +1,10 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Filter } from '../models/filter.model';
