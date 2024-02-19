@@ -19,6 +19,7 @@ import { MaskitoDirective } from '@maskito/angular';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 import { ModalfilterComponent } from './modalfilter/modalfilter.component';
 import { SearchComponent } from './search/search.component';
+import { FrenchDatePipe } from './pipes/french-date.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SearchComponent } from './search/search.component';
     ActiveaccountComponent,
     ModalfilterComponent,
     SearchComponent,
+    FrenchDatePipe,
   ],
   imports: [
     BrowserModule,

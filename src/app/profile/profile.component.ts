@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User, UserInfos } from '../models/user.model';
 import { TokenService } from '../services/token.service';
 import { UserService } from '../services/user.service';
+import { Order } from '../models/order.model';
 
 @Component({
   selector: 'app-profile',
@@ -11,10 +12,21 @@ import { UserService } from '../services/user.service';
 export class ProfileComponent implements OnInit {
   user!: User;
   userId!: number;
+  orders!: Order[];
   constructor(
     private _tokenService: TokenService,
     private _userService: UserService
   ) {}
+
+  getOrders() {
+    this._userService.getOrders(this.userId).subscribe({
+      next: (orders) => {
+        console.log(orders);
+
+        this.orders = orders;
+      },
+    });
+  }
 
   ngOnInit() {
     const user: UserInfos = this._tokenService.readToken();
