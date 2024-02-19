@@ -20,6 +20,7 @@ import { ActiveaccountComponent } from './activeaccount/activeaccount.component'
 import { ModalfilterComponent } from './modalfilter/modalfilter.component';
 import { SearchComponent } from './search/search.component';
 import { FrenchDatePipe } from './pipes/french-date.pipe';
+import { CreateadressComponent } from './createadress/createadress.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     ModalfilterComponent,
     SearchComponent,
     FrenchDatePipe,
+    CreateadressComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,8 +21,12 @@
                   <p >{{adress.number}} {{adress.street}} {{adress.cityName}} {{adress.country}}</p>
   
                 }
+            <ion-button routerLink="/addadress" fill="clear" size="small">Ajouter une adresse</ion-button>
+
               }
             </div>
+          } @else {
+            <ion-button routerLink="/addadress" fill="clear" size="small">Ajouter une adresse</ion-button>
           }
         </ion-card-subtitle>
       </ion-card-header>
@@ -47,6 +51,11 @@
                       <div class="ion-padding" slot="content">
 
                         <h4>Prix total : {{order.totalPrice | currency : 'EUR'}}</h4>
+                        <p>@if (order.totalReduction > 0) {
+                          {{order.totalReduction}}% de réduction appliquée
+                          }@else {
+                            Aucune réduction total sur le produit
+                          }</p>
                         <hr />
                         <div class="product">
                           @for (product of order.orderedProducts; track $index) {
@@ -58,10 +67,9 @@
                             }@else {
                               Aucune réduction sur le produit
                             }</p>
+                            <hr />
                           } 
                         </div>
-
-
                       </div>
                     </ion-accordion>
                     </ion-accordion-group>

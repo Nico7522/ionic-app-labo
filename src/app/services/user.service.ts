@@ -19,6 +19,8 @@ export class UserService {
     return this._httpClient.get<Order[]>(`${api.url}/order/${userId}`).pipe(
       map((orders) => {
         orders.map((o) => {
+          o.totalReduction =
+            Number(o.totalReduction.toString().substring(2)) * 10;
           o.orderedProducts.map((p) => {
             p.reductionPerProduct =
               Number(p.reductionPerProduct.toString().substring(2)) * 10;

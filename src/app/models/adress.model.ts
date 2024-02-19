@@ -5,3 +5,10 @@ export interface Adress {
   number: number;
   street: string;
 }
+
+export interface AdressForm {
+  cityName: string;
+  country: string;
+  number: number;
+  street: string;
+}

@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 import { SearchComponent } from './search/search.component';
+import { CreateadressComponent } from './createadress/createadress.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'addadress',
+        component: CreateadressComponent,
       },
       {
         path: 'confirmaccount/:id',

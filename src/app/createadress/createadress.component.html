@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center">Créer une adresse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center" id="mainContent" scrollY="false">
+  <form [formGroup]="adressForm">
+  <ion-item>
+  <ion-input label-placement="floating" errorText="Champ requis" formControlName="cityName" type="text" label="Ville"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input clearOnEdit="false" label-placement="floating" errorText="Champ requis" formControlName="street" type="text" label="Rue"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input clearOnEdit="false" label-placement="floating" errorText="Champ requis" formControlName="number" type="number" label="Numéro"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input clearOnEdit="false" label-placement="floating" errorText="Champ requis" formControlName="country" type="text" label="Pays"></ion-input>
+  </ion-item>
+  <ion-button (click)="handleSubmit()" shape="round">Ajouter</ion-button>
+</form>
+<!-- 
+@if (message != null) {
+  <span>{{message}}</span>
+} -->
+
+</ion-content>

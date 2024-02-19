@@ -35,5 +35,15 @@
 //   }
 
 html {
-    --ion-dynamic-font: var(--ion-default-dynamic-font);
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
+}
+
+ion-title {
+  display: none;
+}
+
+@media only screen and (min-width: 960px) {
+  ion-title {
+    display: block;
   }
+}
