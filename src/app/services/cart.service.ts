@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CartOrder, CartProduct } from '../models/cart.model';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService implements OnInit {
   private _order: CartOrder = { userId : 1, totalReduction : 0, orderProduct : []};
   private _$order: BehaviorSubject<CartOrder> = new BehaviorSubject<CartOrder>(this._order);
   $order = this._$order.asObservable();
-  constructor() { }
+  constructor(private _tokenService: TokenService) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   addToCart(product: CartProduct) {
     let canAdd = true;
@@ -18,7 +22,6 @@ export class CartService {
           p.quantity = p.quantity + 1
           canAdd = false;
         }
-  
       })
 
     
