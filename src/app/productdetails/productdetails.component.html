@@ -40,14 +40,19 @@
                             </ion-radio-group>
                            
                           </ion-list>
-                           <ion-button >Ajouter au panier</ion-button>
+                           <ion-button  (click)="addToCart()" >Ajouter au panier</ion-button>
  
                        </ion-card-content>
                      </ion-card>
                      
                     }
           <ion-button routerLink="/product"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
- 
+          <ion-alert
+          [isOpen]="isAlertOpen"
+          header="Veuillez séléctionner une taille"
+          [buttons]="alertButtons"
+          (didDismiss)="setOpen(false)"
+        ></ion-alert>
                   </ion-content>
 
 

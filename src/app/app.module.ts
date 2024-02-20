@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { BagComponent } from './bag/bag.component';
 import { ModalComponent } from './modal/modal.component';
 import { MaskitoDirective } from '@maskito/angular';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
@@ -32,7 +31,6 @@ import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.comp
     ProductComponent,
     HomeComponent,
     ProfileComponent,
-    BagComponent,
     ModalComponent,
     ActiveaccountComponent,
     ModalfilterComponent,

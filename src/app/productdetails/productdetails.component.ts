@@ -5,6 +5,8 @@ import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { SizeselectmodalComponent } from '../sizeselectmodal/sizeselectmodal.component';
+import { CartProduct } from '../models/cart.model';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -13,14 +15,22 @@ import { SizeselectmodalComponent } from '../sizeselectmodal/sizeselectmodal.com
 })
 export class ProductdetailsComponent implements OnInit {
   productId!: number;
+  sizeId!: number;
   product!: Product;
   imageUrl: string = api.imgUrl;
   constructor(
     private _productService: ProductService,
     private _activatedRoute: ActivatedRoute,
-    private _modalService: ModalService
-  ) {}
+    private _modalService: ModalService,
+    private _cartService: CartService
 
+  ) {}
+  isAlertOpen = false;
+  alertButtons = ['Fermer'];
+
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
+  }
   ngOnInit() {
     this.productId = this._activatedRoute.snapshot.params['id'];
     this._productService.getById(this.productId).subscribe({
@@ -40,7 +50,24 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   handleChange(ev: any) {
-    console.log('Current value:', JSON.stringify(ev.target.value));
+    this.sizeId = ev.target.value.sizeId;
+  }
+
+  addToCart() {
+    if(this.sizeId === undefined) {
+      this.setOpen(true)
+    }
+    console.log(this.product, this.sizeId);
+    const product: CartProduct = {
+      sizeId : this.sizeId,
+      productId : this.product.productId,
+      price : this.product.price,
+      discount : this.product.discount,
+      quantity : 1,
+    }
+
+    this._cartService.addToCart(product);
+    
   }
 
   trackItems(index: number, item: AvailableSizes) {

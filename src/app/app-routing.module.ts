@@ -4,13 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
-import { BagComponent } from './bag/bag.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ActiveaccountComponent } from './activeaccount/activeaccount.component';
 import { SearchComponent } from './search/search.component';
 import { CreateadressComponent } from './createadress/createadress.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
       {
         path: 'bag',
         canActivate: [AuthGuard],
-        component: BagComponent,
+        component: CartComponent,
       },
       {
         path: 'login',
