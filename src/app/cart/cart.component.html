@@ -14,15 +14,17 @@
             <ion-img [src]="imageUrl + '/' + product.image"
               
             ></ion-img>
-            <ion-label>{{product.modelName}} | Prix : {{product.price | currency: 'EUR'}} X{{product.quantity}} | Prix total {{product.price*product.quantity | currency: 'EUR'}}</ion-label>
+            <ion-label>{{product.modelName}} | Prix : {{product.price | currency: 'EUR'}} X{{product.quantity}} | Prix total {{product.price*product.quantity | currency: 'EUR'}}
+              <ion-button (click)="removeProduct(product.productId, product.sizeId)" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button></ion-label>
           </ion-item>
         }
       </ion-list>
       <hr>
       @if (totalPrice > 0) {
         <p>Prix total : {{totalPrice | currency: 'EUR'}}</p>
-
       }
+
+      <ion-button color="success">Passer la commande</ion-button>
   
     } @else {
       <h5>Panier vide</h5>

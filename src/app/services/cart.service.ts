@@ -45,6 +45,19 @@ export class CartService implements OnInit {
     this.$cart_length.subscribe((l) => console.log('Taille du panier : ', l));
   }
 
+  removeFromCart(productId: number, sizeId: number): void {
+    console.log('productId : ', productId + 'sizeId', sizeId);
+
+    this._cartProduct = this._cartProduct.filter((p) => {
+      if (p.productId === productId && p.sizeId === sizeId) {
+        this._cartLength = this._cartLength - p.quantity;
+        this._$cartLength.next(this._cartLength);
+      }
+      return !(p.productId === productId && p.sizeId === sizeId);
+    });
+    this._$cartProduct.next(this._cartProduct);
+  }
+
   createCommand() {
     // POSTER LA COMMMANDE
   }

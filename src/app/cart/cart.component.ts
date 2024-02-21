@@ -23,4 +23,8 @@ export class CartComponent implements OnInit {
       },
     });
   }
+
+  removeProduct(productId: number, sizeId: number) {
+    this._cartService.removeFromCart(productId, sizeId);
+  }
 }

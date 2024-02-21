@@ -19,6 +19,12 @@ ion-toolbar {
   text-align: center;
 }
 
+@media only screen and (max-width: 960px) {
+  ion-button {
+    font-size: 1em;
+  }
+}
+
 // .flex {
 //   display: flex;
 //   align-items: center;
