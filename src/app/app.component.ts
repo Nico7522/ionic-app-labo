@@ -4,6 +4,8 @@ import { MenuController, ModalController } from '@ionic/angular';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './modal/modal.component';
 import { AuthService } from './services/auth.service';
+import { CartService } from './services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +15,22 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   isTokenExist!: boolean;
   isOpen!: boolean;
+  // $cartLength = this._cartService.$cart_length;
+  cartLength!: number;
   constructor(
     private _tokenService: TokenService,
     private _menu: MenuController,
     private _modalService: ModalService,
     private _modalCtrl: ModalController,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _cartService: CartService
   ) {}
   ngOnInit(): void {
     this._tokenService.$isTokenExist.subscribe(
       (status) => (this.isTokenExist = status)
     );
+
+    this._cartService.$cart_length.subscribe((l) => (this.cartLength = l));
   }
 
   closeMenu() {

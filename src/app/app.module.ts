@@ -22,6 +22,7 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
 import { CreateadressComponent } from './createadress/createadress.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.comp
     CreateadressComponent,
     ProductdetailsComponent,
     SizeselectmodalComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

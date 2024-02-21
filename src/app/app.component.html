@@ -23,9 +23,9 @@
             <ion-icon slot="start" name="person-circle-outline"></ion-icon>
             Profile
           </ion-button>
-          <ion-button routerLink="/bag" click fill="outline" size="small"  >
+          <ion-button routerLink="/cart" click fill="outline" size="small"  >
             <ion-icon slot="start" name="bag"></ion-icon>
-            Panier
+            Panier {{ cartLength > 0 ? cartLength : '' }}
           </ion-button>
           <ion-button (click)="logout()" click fill="outline" size="small"  >
             <ion-icon name="log-out-outline"></ion-icon>

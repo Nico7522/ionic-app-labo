@@ -23,7 +23,6 @@ export class ProductdetailsComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _modalService: ModalService,
     private _cartService: CartService
-
   ) {}
   isAlertOpen = false;
   alertButtons = ['Fermer'];
@@ -53,21 +52,22 @@ export class ProductdetailsComponent implements OnInit {
     this.sizeId = ev.target.value.sizeId;
   }
 
-  addToCart() {
-    if(this.sizeId === undefined) {
-      this.setOpen(true)
+  addToCart(): void {
+    if (this.sizeId === undefined) {
+      this.setOpen(true);
+      return;
     }
-    console.log(this.product, this.sizeId);
     const product: CartProduct = {
-      sizeId : this.sizeId,
-      productId : this.product.productId,
-      price : this.product.price,
-      discount : this.product.discount,
-      quantity : 1,
-    }
+      modelName: this.product.modelName,
+      sizeId: this.sizeId,
+      productId: this.product.productId,
+      price: this.product.price,
+      discount: this.product.discount,
+      quantity: 1,
+      image: this.product.image,
+    };
 
     this._cartService.addToCart(product);
-    
   }
 
   trackItems(index: number, item: AvailableSizes) {

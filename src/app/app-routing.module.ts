@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       { path: 'product/search', component: SearchComponent },
       {
-        path: 'bag',
+        path: 'cart',
         canActivate: [AuthGuard],
         component: CartComponent,
       },

@@ -1,3 +1,31 @@
-<p>
-  cart works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Votre panier</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content scrollY="false">
+  <h4>Vos produits</h4>
+
+  <section class="cart">
+    @if (cartProduct.length > 0 ) {
+      <ion-list [inset]="true">
+        @for (product of cartProduct; track $index) {
+          <ion-item>
+            <ion-img [src]="imageUrl + '/' + product.image"
+              
+            ></ion-img>
+            <ion-label>{{product.modelName}} | Prix : {{product.price | currency: 'EUR'}} X{{product.quantity}} | Prix total {{product.price*product.quantity | currency: 'EUR'}}</ion-label>
+          </ion-item>
+        }
+      </ion-list>
+      <hr>
+      @if (totalPrice > 0) {
+        <p>Prix total : {{totalPrice | currency: 'EUR'}}</p>
+
+      }
+  
+    } @else {
+      <h5>Panier vide</h5>
+    }
+  </section>
+</ion-content>
