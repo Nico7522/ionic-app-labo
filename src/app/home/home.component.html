@@ -1,8 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title align="center">Top produit</ion-title>
+    <ion-title align="center">Top produits</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content id="mainContent">
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio a sunt aliquid, dolorem eius laudantium! Accusantium doloribus quibusdam beatae quod repudiandae, in qui. Perferendis, consectetur delectus voluptatum asperiores nihil sequi. Ducimus corrupti dolor eius nam optio facilis necessitatibus quod voluptatum ex sed, quidem, totam quasi dicta debitis, vero ab. Odio.</p>
+  <h2>Les Meilleurs ventes</h2>
+  <ion-grid>
+    <ion-row>
+      @for (product of topProduct; track product.productId) {
+        <app-product-standalone [product]="product"></app-product-standalone>
+      }
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+

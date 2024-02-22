@@ -4,55 +4,68 @@
   </ion-toolbar>
 </ion-header>
 <ion-content id="mainContent" class="ion-text-center">
-@if (!product) {
+  @if (!product) {
   <p>...</p>
-} @else {
-  <ion-card >
-         <ion-card-title align="center">{{product.modelName}}</ion-card-title>
-    <img alt="Silhouette of mountains" [src]="imageUrl + '/' + product.image"  />
-                       <ion-card-header>
-                         <ion-card-subtitle>{{product.brand | titlecase}} {{product.price | currency: 'EUR'}}</ion-card-subtitle>
-                         <p>{{product.sexe}}</p>
-                       </ion-card-header>
-                     
-                       <ion-card-content>
-                        <ion-toolbar>
-                          <h4>Catégories</h4>
-                        </ion-toolbar>
-                        <ion-list [inset]="true">
-                          @for (category of product.categories; track $index) {
-                            <ion-item>
-                              <ion-label align="center" >{{category.categoryName}}</ion-label>
-                            </ion-item>
-                          }
-                        </ion-list>
+  } @else {
+  <ion-card>
+    <ion-card-title align="center">{{ product.modelName }}</ion-card-title>
+    <img alt="Silhouette of mountains" [src]="imageUrl + '/' + product.image" />
+    <ion-card-header>
+      <ion-card-subtitle
+        >{{ product.brand | titlecase }}
+        {{ product.price | currency : "EUR" }}</ion-card-subtitle
+      >
+      <p>{{ product.sexe }}</p>
+    </ion-card-header>
 
-                        <ion-toolbar>
-                          <h4>Tailles</h4>
-                        </ion-toolbar>
-                        <ion-list >
-                            <ion-radio-group [compareWith]="compareWith" (ionChange)="handleChange($event)">
-                              @for (size of product.sizes; track $index) {
-                                <ion-item >
-                                  <ion-radio [value]="size">{{ size.size }}</ion-radio>
-                                </ion-item>
-                              }
-                            </ion-radio-group>
-                           
-                          </ion-list>
-                           <ion-button  (click)="addToCart()" >Ajouter au panier</ion-button>
- 
-                       </ion-card-content>
-                     </ion-card>
-                     
-                    }
-          <ion-button routerLink="/product"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
-          <ion-alert
-          [isOpen]="isAlertOpen"
-          header="Veuillez séléctionner une taille"
-          [buttons]="alertButtons"
-          (didDismiss)="setOpen(false)"
-        ></ion-alert>
-                  </ion-content>
+    <ion-card-content>
+      <ion-toolbar>
+        <h4>Catégories</h4>
+      </ion-toolbar>
+      <ion-list [inset]="true">
+        @for (category of product.categories; track $index) {
+        <ion-item>
+          <ion-label align="center">{{ category.categoryName }}</ion-label>
+        </ion-item>
+        }
+      </ion-list>
 
+      <ion-toolbar>
+        <h4>Tailles</h4>
+      </ion-toolbar>
+      <ion-list>
+        <ion-radio-group
+          [compareWith]="compareWith"
+          (ionChange)="handleChange($event)"
+        >
+        @if(product.sizes.length > 0){
+          @for (size of product.sizes; track $index) {
+            <ion-item>
+              <ion-radio [value]="size">{{ size.size }}</ion-radio>
+            </ion-item>
+            }
 
+        } @else {
+          <p>Pas de taille disponible pour le moment</p>
+        }
+       
+        </ion-radio-group>
+      </ion-list>
+      @if(product.sizes.length > 0){
+
+      <ion-button (click)="addToCart()">Ajouter au panier</ion-button>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  }
+  <ion-button (click)="back()"
+    ><ion-icon name="arrow-back-outline"></ion-icon
+  ></ion-button>
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    [header]="alertMessage"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+  ></ion-alert>
+</ion-content>

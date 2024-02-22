@@ -11,6 +11,8 @@ export class CartComponent implements OnInit {
   cartProduct: CartProduct[] = [];
   totalPrice: number = 0;
   imageUrl: string = api.imgUrl;
+  isAlertOpen = false;
+  alertButtons = ['Fermer'];
   constructor(private _cartService: CartService) {}
 
   ngOnInit() {
@@ -26,5 +28,14 @@ export class CartComponent implements OnInit {
 
   removeProduct(productId: number, sizeId: number) {
     this._cartService.removeFromCart(productId, sizeId);
+  }
+
+  command(){
+    this.setOpen(true);
+  }
+ 
+
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
   }
 }

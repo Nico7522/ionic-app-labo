@@ -9,7 +9,7 @@
 <ion-content scrollY="false">
   <form [formGroup]="filterForm">
     <ion-item>
-      <ion-input formControlName="modelName" label="Nom du produit"></ion-input>
+      <ion-searchbar type="text" color="light" formControlName="modelName" placeholder="Nom du produit"></ion-searchbar>
     </ion-item>
   
   
@@ -25,12 +25,12 @@
       </ion-item>
     </ion-radio-group>
     <ion-item>
-      <ion-select formControlName="category"  label="Catégories" >
+      <ion-select formControlName="category"  label="Catégorie" cancelText="Fermer" >
         <ion-select-option value="chaussure de sécurité">Chaussure de sécurité</ion-select-option>
         <ion-select-option value="après-ski">Après-ski</ion-select-option>
         <ion-select-option value="rue">Pour la rue</ion-select-option>
       </ion-select>
-      <ion-select formControlName="brand"  label="Marque" >
+      <ion-select formControlName="brand"  label="Marque" cancelText="Fermer" >
         <ion-select-option value="nike">Nike</ion-select-option>
         <ion-select-option value="adidas">Adidas</ion-select-option>
         <ion-select-option value="puma">Puma</ion-select-option>

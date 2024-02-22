@@ -23,7 +23,7 @@ import { CreateadressComponent } from './createadress/createadress.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.component';
 import { CartComponent } from './cart/cart.component';
-
+import {ProductComponent as ProductStandalone } from './standalone/product/product.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +41,9 @@ import { CartComponent } from './cart/cart.component';
     ProductdetailsComponent,
     SizeselectmodalComponent,
     CartComponent,
+    ProductStandalone
+    
+    
   ],
   imports: [
     BrowserModule,

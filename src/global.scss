@@ -50,6 +50,13 @@ ion-title {
   display: none;
 }
 
+@font-face {
+  font-family: 'titleh2';
+  src: url('./Fonts/SansSerifExbFLFCond.otf');
+  font-weight: normal;
+  font-style: normal;
+  }
+
 @media only screen and (min-width: 960px) {
   ion-title {
     display: block;

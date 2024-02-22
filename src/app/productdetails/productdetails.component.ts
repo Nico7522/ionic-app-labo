@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AvailableSizes, Product } from '../models/product.model';
 import { api } from '../../environments/environment';
 import { ProductService } from '../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { SizeselectmodalComponent } from '../sizeselectmodal/sizeselectmodal.component';
 import { CartProduct } from '../models/cart.model';
 import { CartService } from '../services/cart.service';
+import { TokenService } from '../services/token.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-productdetails',
@@ -15,6 +17,7 @@ import { CartService } from '../services/cart.service';
 })
 export class ProductdetailsComponent implements OnInit {
   productId!: number;
+  isTokenExist!: boolean;
   sizeId!: number;
   product!: Product;
   imageUrl: string = api.imgUrl;
@@ -22,9 +25,13 @@ export class ProductdetailsComponent implements OnInit {
     private _productService: ProductService,
     private _activatedRoute: ActivatedRoute,
     private _modalService: ModalService,
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _tokenService: TokenService,
+    private _router: Router,
+    private _location: Location
   ) {}
   isAlertOpen = false;
+  alertMessage: string = '';
   alertButtons = ['Fermer'];
 
   setOpen(isOpen: boolean) {
@@ -38,6 +45,8 @@ export class ProductdetailsComponent implements OnInit {
         this.product = product.data;
       },
     });
+
+    this._tokenService.$isTokenExist.subscribe(token => this.isTokenExist = token)
   }
 
   openModal() {
@@ -53,7 +62,15 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   addToCart(): void {
+
+    if(!this.isTokenExist) {
+      this.alertMessage = "Veuillez vous connectez";
+      this.setOpen(true);
+      return;
+    }
+
     if (this.sizeId === undefined) {
+      this.alertMessage = "Veuillez séléctionner une taille";
       this.setOpen(true);
       return;
     }
@@ -72,5 +89,12 @@ export class ProductdetailsComponent implements OnInit {
 
   trackItems(index: number, item: AvailableSizes) {
     return item.sizeId;
+  }
+
+  back() {
+    let backPath: string = this._router.url.substring(0, this._router.url.length-11);
+    
+    this._location.back();
+    
   }
 }

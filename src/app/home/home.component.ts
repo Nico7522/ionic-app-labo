@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Product } from '../models/product.model';
+import { Response } from '../models/response.model';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -6,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent  implements OnInit {
+  topProduct: Product[] = [];
+  constructor(private _productService: ProductService, private _router: Router) { }
 
-  constructor() { }
+  ngOnInit() {
+    this._productService.getTopProduct().subscribe({
+      next: (response) => this.topProduct = response.data,
+      error: (err) => console.log(err)
+      
 
-  ngOnInit() {}
+      
+    })
+
+    this._productService.setCurrentLocation(this._router.url);
+  }
 
 }

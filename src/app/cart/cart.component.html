@@ -24,10 +24,16 @@
         <p>Prix total : {{totalPrice | currency: 'EUR'}}</p>
       }
 
-      <ion-button color="success">Passer la commande</ion-button>
+      <ion-button (click)="command()" color="success">Passer la commande</ion-button>
   
     } @else {
       <h5>Panier vide</h5>
     }
   </section>
+  <ion-alert
+  [isOpen]="isAlertOpen"
+  header="Commande passée, merci."
+  [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)"
+></ion-alert>
 </ion-content>
