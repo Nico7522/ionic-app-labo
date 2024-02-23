@@ -3,12 +3,14 @@
     <ion-title align="center">Top produits</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content id="mainContent">
+<ion-content  id="mainContent">
   <h2>Les Meilleurs ventes</h2>
   <ion-grid>
-    <ion-row>
+    <ion-row class="ion-justify-content-center">
       @for (product of topProduct; track product.productId) {
-        <app-product-standalone [product]="product"></app-product-standalone>
+        <ion-col size="1">
+          <app-product-standalone [product]="product"></app-product-standalone>
+        </ion-col>
       }
     </ion-row>
   </ion-grid>

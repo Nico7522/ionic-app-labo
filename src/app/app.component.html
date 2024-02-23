@@ -6,30 +6,27 @@
       </ion-toolbar>
     </ion-header>
      <!-- write your menu content here-->
-     <div class="nav">
-      <ion-button routerLink="/" fill="outline">Home</ion-button>
-
-       <ion-button routerLink="/product" fill="outline">Produits</ion-button>
-       <ion-button routerLink="/login" fill="outline">Se connecter</ion-button>
-       <ion-button routerLink="/register" fill="outline">S'enregistrer</ion-button>
-     </div>
+    <div class="nav">
+      <ion-button (click)="setLocation('/')" routerLink="/" fill="outline">Home</ion-button>
+      <ion-button (click)="setLocation('/product')" routerLink="/product" fill="outline">Produits</ion-button>
+      <ion-button routerLink="/login" fill="outline">Se connecter</ion-button>
+      <ion-button routerLink="/register" fill="outline">S'enregistrer</ion-button>
+    </div>
   </ion-menu>     
-  <div class="ion-page" id = "mainContent" main>
+  <div class="ion-page" id="mainContent" main>
     <ion-buttons class="ion-justify-content-between" slot="start">
       <ion-menu-button></ion-menu-button>
       @if (isTokenExist) {
         <div class="profil">
           <ion-button routerLink="/profile" fill="outline" size="small" >
-            <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-            Profile
+            <ion-icon  name="person-circle-outline"></ion-icon>
           </ion-button>
           <ion-button routerLink="/cart" click fill="outline" size="small"  >
-            <ion-icon slot="start" name="bag"></ion-icon>
-            Panier {{ cartLength > 0 ? cartLength : '' }}
+            <ion-icon  name="bag"></ion-icon>
+            {{ cartLength > 0 ? cartLength : '' }}
           </ion-button>
           <ion-button (click)="logout()" click fill="outline" size="small"  >
-            <ion-icon name="log-out-outline"></ion-icon>
-            Se déconnecter
+            <ion-icon name="log-out-outline" class="disconnect"></ion-icon>
           </ion-button>
           
         </div>

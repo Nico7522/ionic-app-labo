@@ -9,6 +9,7 @@ import { CartProduct } from '../models/cart.model';
 import { CartService } from '../services/cart.service';
 import { TokenService } from '../services/token.service';
 import { Location } from '@angular/common';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -21,6 +22,7 @@ export class ProductdetailsComponent implements OnInit {
   sizeId!: number;
   product!: Product;
   imageUrl: string = api.imgUrl;
+  previousLocation!: string;
   constructor(
     private _productService: ProductService,
     private _activatedRoute: ActivatedRoute,
@@ -28,8 +30,11 @@ export class ProductdetailsComponent implements OnInit {
     private _cartService: CartService,
     private _tokenService: TokenService,
     private _router: Router,
+    private _userService: UserService,
     private _location: Location
-  ) {}
+  ) {
+
+  }
   isAlertOpen = false;
   alertMessage: string = '';
   alertButtons = ['Fermer'];
@@ -47,6 +52,8 @@ export class ProductdetailsComponent implements OnInit {
     });
 
     this._tokenService.$isTokenExist.subscribe(token => this.isTokenExist = token)
+    this._userService.$currentLocation.subscribe(location => this.previousLocation = location)
+    
   }
 
   openModal() {
@@ -92,9 +99,9 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   back() {
-    let backPath: string = this._router.url.substring(0, this._router.url.length-11);
+    console.log(this.previousLocation);
     
-    this._location.back();
-    
+    this._router.navigate([this.previousLocation])
+    // this._location.back();
   }
 }

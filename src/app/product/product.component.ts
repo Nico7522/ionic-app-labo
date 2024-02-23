@@ -17,19 +17,30 @@ export class ProductComponent implements OnInit {
     private _modalService: ModalService,
     private _router: Router
   ) {}
-
+  offset: number = 0;
   products: Product[] = [];
   imageUrl: string = api.imgUrl;
   ngOnInit() {
-    this._productService.getAll().subscribe({
+    this._productService.getByStep(this.offset).subscribe({
       next: (response: Response<Product[]>) => (this.products = response.data),
       error: (err) => console.log(err),
     });
-
-    this._productService.setCurrentLocation(this._router.url)
+    
   }
 
   openFilter() {
     this._modalService.openModal(ModalfilterComponent);
+  }
+
+  addMoreProduct(): void {
+    this.offset +=10;
+    this._productService.getByStep(this.offset).subscribe({
+      next: (response: Response<Product[]>) => {
+        response.data.forEach(p => {
+          this.products.push(p)
+        })
+      },
+      error: (err) => console.log(err),
+    });
   }
 }

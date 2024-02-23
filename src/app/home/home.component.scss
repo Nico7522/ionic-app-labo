@@ -1,4 +1,42 @@
 h2 {
-    font-family: "titleh2";
-    font-size: 2.2em;
+  font-family: "titleh2";
+  font-size: 2.2em;
+}
+
+ion-grid {
+  --ion-grid-columns: 4;
+}
+
+ion-card-subtitle {
+  font-size: 2em;
+}
+
+ion-card-title {
+  font-size: 2.3em;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.block {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1015px) {
+  ion-grid {
+    --ion-grid-columns: 2;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  ion-grid {
+    --ion-grid-columns: 1;
+  }
 }

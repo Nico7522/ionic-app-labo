@@ -6,6 +6,7 @@ import { ModalComponent } from './modal/modal.component';
 import { AuthService } from './services/auth.service';
 import { CartService } from './services/cart.service';
 import { Observable } from 'rxjs';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private _modalService: ModalService,
     private _modalCtrl: ModalController,
     private _authService: AuthService,
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _userService: UserService
   ) {}
   ngOnInit(): void {
     this._tokenService.$isTokenExist.subscribe(
@@ -43,5 +45,10 @@ export class AppComponent implements OnInit {
 
   logout() {
     this._authService.logout();
+  }
+
+  setLocation(location: string) {
+    this._userService.setCurrentLocation(location);
+
   }
 }

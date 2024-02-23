@@ -3,15 +3,18 @@
     <ion-title align="center">Product</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content id="mainContent">
+<ion-content class="ion-justify-content-center ion-text-center" id="mainContent">
+  <h2>Tous les produits</h2>
   <ion-grid>
     <ion-row>
       @for (product of products; track product.productId) {
-        <app-product-standalone [product]="product"></app-product-standalone>
-      
+        <ion-col size="1">
+          <app-product-standalone [product]="product"></app-product-standalone>
+        </ion-col>
       }
     </ion-row>
   </ion-grid>
+  <ion-button (click)="addMoreProduct()"><ion-icon name="add-outline"></ion-icon></ion-button>
 </ion-content>
 
 <ion-footer>
