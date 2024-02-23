@@ -32,6 +32,7 @@ export class CartComponent implements OnInit {
 
   command(){
     this.setOpen(true);
+    this._cartService.createCommand();
   }
  
 

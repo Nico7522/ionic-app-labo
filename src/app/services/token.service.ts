@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { UserInfos } from '../models/user.model';
@@ -7,7 +8,7 @@ import { UserInfos } from '../models/user.model';
   providedIn: 'root',
 })
 export class TokenService {
-  constructor() {}
+  constructor(private _router: Router) {}
 
   get isTokenExist(): boolean {
     return localStorage.getItem('token') != undefined;
@@ -18,17 +19,24 @@ export class TokenService {
 
   emitTokenExist() {
     this._$isTokenExist.next(this.isTokenExist);
+    if(this.isTokenExist === false && this._router.url.includes("profile")) {
+      this._router.navigate(['/']);
+    }
   }
 
-  readToken(): UserInfos {
+  readToken(): UserInfos  {
     let token: string = localStorage.getItem('token') ?? '';
-    let jwt: any = jwt_decode.jwtDecode(token);
-
+    let jwt: any
+    if(token !== "") {
+      jwt  = jwt_decode.jwtDecode(token);
+    }
+    
     return {
       id: jwt['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid'],
       fullName:
         jwt['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname'],
       role: jwt['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'],
+      tokenLimitDate: jwt['http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration']
     };
   }
 }

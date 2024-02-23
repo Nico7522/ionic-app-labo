@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CartOrder, CartProduct } from '../models/cart.model';
+import { Order, OrderedProducts } from '../models/order.model';
 import { TokenService } from './token.service';
+import { api } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +22,7 @@ export class CartService implements OnInit {
   >(this._cartProduct);
   $cartProduct = this._$cartProduct.asObservable();
 
-  constructor(private _tokenService: TokenService) {}
+  constructor(private _tokenService: TokenService, private _httpClient: HttpClient) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -59,6 +62,19 @@ export class CartService implements OnInit {
   }
 
   createCommand() {
+    if(!this._tokenService.isTokenExist) {
+      return;
+    } else {
+      let order: CartOrder = {
+        userId: this._tokenService.readToken().id,
+        totalReduction: 0.20,
+        orderProduct: this._cartProduct
+      }
+      console.log(order);
+      this._httpClient.post(`${api.url}/order`, order).subscribe(res => console.log(res)
+      )
+
+    }
     // POSTER LA COMMMANDE
   }
 }

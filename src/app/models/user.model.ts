@@ -15,4 +15,5 @@ export interface UserInfos {
   id: number;
   fullName: string;
   role: string;
+  tokenLimitDate: Date
 }

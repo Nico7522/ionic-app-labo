@@ -9,7 +9,11 @@
     <ion-card-header>
       <ion-card-subtitle
         >{{ product.brand | titlecase }}
-        {{ product.price | currency : "EUR" }}</ion-card-subtitle
+        {{ product.price | currency : "EUR" }}
+          @if (product.discount > 0) {
+            <span class="discount"> -{{product.discount | discount}}%</span>
+          }
+        </ion-card-subtitle
       >
       <p>{{ product.sexe }}</p>
     </ion-card-header>

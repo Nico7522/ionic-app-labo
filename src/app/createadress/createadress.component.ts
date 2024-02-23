@@ -42,7 +42,7 @@ export class CreateadressComponent implements OnInit {
         street: this.adressForm.get('street')?.value,
       };
       this._adressService.addAdress(adress, this.userId).subscribe({
-        next: (res) => {
+        next: () => {
           this.adressForm.reset();
           this._router.navigate(['/profile']);
         },

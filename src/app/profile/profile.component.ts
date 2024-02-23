@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private _userService: UserService
   ) {}
   ngOnDestroy(): void {
-    console.log('cc');
   }
 
   getOrders() {
@@ -33,10 +32,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const user: UserInfos = this._tokenService.readToken();
+    console.log(this._tokenService.readToken().tokenLimitDate);
+    
     this.userId = user.id;
     this._userService.getById(this.userId).subscribe({
       next: (user: User) => {
-        (this.user = user), console.log(user);
+        (this.user = user)
       },
       error: (err) => console.log(err),
     });

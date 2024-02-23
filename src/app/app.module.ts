@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
 import { MaskitoDirective } from '@maskito/angular';
@@ -23,7 +23,9 @@ import { CreateadressComponent } from './createadress/createadress.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { SizeselectmodalComponent } from './sizeselectmodal/sizeselectmodal.component';
 import { CartComponent } from './cart/cart.component';
-import {ProductComponent as ProductStandalone } from './standalone/product/product.component'
+import {ProductComponent as ProductStandalone } from './standalone/product/product.component';
+import { DiscountPipe } from './pipes/discount.pipe'
+import { tokenInterceptor } from './interceptors/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import {ProductComponent as ProductStandalone } from './standalone/product/produ
     ProductdetailsComponent,
     SizeselectmodalComponent,
     CartComponent,
-    ProductStandalone
+    ProductStandalone,
+    DiscountPipe
     
     
   ],
@@ -54,7 +57,7 @@ import {ProductComponent as ProductStandalone } from './standalone/product/produ
     MaskitoDirective,
     FormsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },{ provide: HTTP_INTERCEPTORS, useClass: tokenInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
