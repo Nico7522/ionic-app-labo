@@ -22,4 +22,8 @@ export class ModalService {
     modal.present();
     await modal.onDidDismiss().then((data) => this._$formSubject.next(data));
   }
+
+  cancel() {
+    return this._modalCtrl.dismiss(null, 'cancel');
+  }
 }

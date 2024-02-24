@@ -4,13 +4,15 @@ import { api } from '../../environments/environment';
 import { Login, Register, Token } from '../models/login.model';
 import { Observable, map, of } from 'rxjs';
 import { TokenService } from './token.service';
+import { ModalService } from './modal.service';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(
     private _httpClient: HttpClient,
-    private _tokenService: TokenService
+    private _tokenService: TokenService,
+    private _modalService: ModalService
   ) {}
 
   login(loginForm: Login): Observable<Token> {
@@ -21,6 +23,8 @@ export class AuthService {
           console.log('response service', response);
           localStorage.setItem('token', response.token);
           this._tokenService.emitTokenExist();
+          this._modalService.cancel();
+
           return response;
         })
       );

@@ -4,7 +4,9 @@ import { BehaviorSubject } from 'rxjs';
 import { CartOrder, CartProduct } from '../models/cart.model';
 import { Order, OrderedProducts } from '../models/order.model';
 import { TokenService } from './token.service';
-import { api } from '../../environments/environment'
+import { api } from '../../environments/environment';
+import { ModalService } from './modal.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +24,11 @@ export class CartService implements OnInit {
   >(this._cartProduct);
   $cartProduct = this._$cartProduct.asObservable();
 
-  constructor(private _tokenService: TokenService, private _httpClient: HttpClient) {}
+  constructor(
+    private _tokenService: TokenService,
+    private _httpClient: HttpClient,
+    private _modalService: ModalService
+  ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -44,13 +50,9 @@ export class CartService implements OnInit {
       this._cartLength++;
       this._$cartLength.next(this._cartLength);
     }
-    this._$cartProduct.subscribe((o) => console.log(o));
-    this.$cart_length.subscribe((l) => console.log('Taille du panier : ', l));
   }
 
   removeFromCart(productId: number, sizeId: number): void {
-    console.log('productId : ', productId + 'sizeId', sizeId);
-
     this._cartProduct = this._cartProduct.filter((p) => {
       if (p.productId === productId && p.sizeId === sizeId) {
         this._cartLength = this._cartLength - p.quantity;
@@ -62,19 +64,14 @@ export class CartService implements OnInit {
   }
 
   createCommand() {
-    if(!this._tokenService.isTokenExist) {
-      return;
-    } else {
-      let order: CartOrder = {
-        userId: this._tokenService.readToken().id,
-        totalReduction: 0.20,
-        orderProduct: this._cartProduct
-      }
-      console.log(order);
-      this._httpClient.post(`${api.url}/order`, order).subscribe(res => console.log(res)
-      )
-
-    }
-    // POSTER LA COMMMANDE
+    let order: CartOrder = {
+      userId: this._tokenService.readToken().id,
+      totalReduction: 0.2,
+      orderProduct: this._cartProduct,
+    };
+    console.log(order);
+    this._httpClient
+      .post(`${api.url}/order`, order)
+      .subscribe((res) => console.log(res));
   }
 }

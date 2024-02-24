@@ -1,8 +1,18 @@
-
 ion-content {
-    --offset-top: 0px;
-    --offset-bottom: 0px;
-    height: 300px;
-    width: 100%;
-    overflow-y: hidden;
+  --offset-top: 0px;
+  --offset-bottom: 0px;
+  height: 300px;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+ion-title {
+  display: block;
+  font-size: 1.1em;
+  margin-top: 7px;
+}
+
+.modallogin {
+  height: 400px;
+  width: 100%;
 }

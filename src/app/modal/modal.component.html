@@ -1,20 +1,13 @@
-
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Vous devez être connecté</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="cancel()">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content scrollY="false">
-        <div style="height: 400px; width: 100%;">
-          <app-login></app-login>
-
-        </div>
-
-      </ion-content>
-
-    
-
-
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Vous devez être connecté</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Fermé</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content scrollY="false">
+  <div class="modallogin">
+    <app-login></app-login>
+  </div>
+</ion-content>

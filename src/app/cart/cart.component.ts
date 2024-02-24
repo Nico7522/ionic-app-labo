@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartProduct } from '../models/cart.model';
 import { api } from '../../environments/environment';
+import { TokenService } from '../services/token.service';
+import { ModalService } from '../services/modal.service';
+import { ModalComponent } from '../modal/modal.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,7 +16,11 @@ export class CartComponent implements OnInit {
   imageUrl: string = api.imgUrl;
   isAlertOpen = false;
   alertButtons = ['Fermer'];
-  constructor(private _cartService: CartService) {}
+  constructor(
+    private _cartService: CartService,
+    private _tokenService: TokenService,
+    private _modalService: ModalService
+  ) {}
 
   ngOnInit() {
     this._cartService.$cartProduct.subscribe({
@@ -30,11 +37,14 @@ export class CartComponent implements OnInit {
     this._cartService.removeFromCart(productId, sizeId);
   }
 
-  command(){
-    this.setOpen(true);
-    this._cartService.createCommand();
+  command() {
+    if (this._tokenService.isTokenExist) {
+      this.setOpen(true);
+      this._cartService.createCommand();
+    } else {
+      this._modalService.openModal(ModalComponent);
+    }
   }
- 
 
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
