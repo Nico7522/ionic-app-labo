@@ -54,12 +54,24 @@ export class CartService implements OnInit {
 
   removeFromCart(productId: number, sizeId: number): void {
     this._cartProduct = this._cartProduct.filter((p) => {
-      if (p.productId === productId && p.sizeId === sizeId) {
-        this._cartLength = this._cartLength - p.quantity;
-        this._$cartLength.next(this._cartLength);
+      if (p.productId === productId) {
+        if (p.sizeId === sizeId) {
+          if (p.quantity > 1) {
+            this._cartLength = this._cartLength - 1;
+            this._$cartLength.next(this._cartLength);
+            return (p.quantity = p.quantity - 1);
+          } else {
+            this._cartLength = this._cartLength - 1;
+            this._$cartLength.next(this._cartLength);
+            return false;
+          }
+        } else {
+          return true;
+        }
       }
-      return !(p.productId === productId && p.sizeId === sizeId);
+      return true;
     });
+    // Émettre une nouvelle valeur pour le panier
     this._$cartProduct.next(this._cartProduct);
   }
 
